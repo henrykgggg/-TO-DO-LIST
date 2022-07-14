@@ -54,3 +54,19 @@
     font-style: italic;
     font-weight: 400;
   }
+
+  .todo-delete {
+    height: 50px;
+    bottom: 0;
+    outline: none;
+    border: none;
+    background-color: #f1f2f5;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .todo-delete span {
+    opacity: 0.5;
+    color: #333;
+  }
