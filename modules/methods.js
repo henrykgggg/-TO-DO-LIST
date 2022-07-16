@@ -58,5 +58,5 @@ const deletemylist = (targetIndex) => {
 };
 
 export {
-  mylists, addmylist, editmylist, deletemylist,updateTodo,mylist
+  mylists, addmylist, editmylist, deletemylist, updateTodo, mylist,
 };
