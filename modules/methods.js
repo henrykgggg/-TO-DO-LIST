@@ -17,6 +17,11 @@ const mylists = () => {
   return mainLists;
 };
 
+const updateTodo = (items) => {
+  mylist = items;
+  mylists();
+};
+
 const addmylist = (event) => {
   if (newTask.value === '') return;
   if (event.key === 'Enter' || event === 'clicked') {
@@ -53,5 +58,5 @@ const deletemylist = (targetIndex) => {
 };
 
 export {
-  mylists, addmylist, editmylist, deletemylist,
+  mylists, addmylist, editmylist, deletemylist,updateTodo,mylist
 };
