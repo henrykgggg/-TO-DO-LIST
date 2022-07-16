@@ -1,6 +1,6 @@
-import { mylists } from "../modules/methods.js";
-import {addmylist, editmylist, deletemylist} from "../modules/methods.js"
-
+import {
+  mylists, addmylist, editmylist, deletemylist,
+} from '../modules/methods.js';
 
 const listGroup = document.getElementById('todo-lists');
 const newTask = document.querySelector('.todo-add').querySelector('input');

@@ -2,7 +2,7 @@ let mylist = JSON.parse(localStorage.getItem('mylist')) || [];// eslint-disable-
 
 const mainLists = document.getElementById('todo-lists');
 const newTask = document.querySelector('.todo-add').querySelector('input');
-const  mylists= () => {
+const mylists = () => {
   const todosElement = mylist.map((item) => `
         <li class="todo-list todo-item" id=${item.index}>
           ${item.completed === true ? `
