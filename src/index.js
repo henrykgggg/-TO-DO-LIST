@@ -1,44 +1,23 @@
-const mylist = [
-  {
-    description: 'W3schools',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'hackerrank solutions',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'microverse quiz',
-    completed: true,
-    index: 3,
-  },
-  {
-    description: 'andela exams',
-    completed: false,
-    index: 4,
-  },
-];
+import { mylists } from "../modules/methods.js";
+import {addmylist, editmylist, deletemylist} from "../modules/methods.js"
 
-const mylists = () => {
-  const lists = document.getElementById('todo-lists');
-  mylist.map((item) => {
-    const listItem = document.createElement('li');
-    listItem.classList = 'todo todo-item';
-    listItem.id = `${item.index}`;
-    listItem.innerHTML = `
-    <button type="button" class =${
-  item.completed === true ? 'checked-button' : 'unchecked-button'
-}> <i class="fa-solid fa-check"></i></button>
-    <input type= 'text' class=${
-  item.completed === true ? 'decoration' : 'undecorated'
-} 
-    value = "${item.description} ">
-    <span class= "todo-item-span"><i class="fa-solid fa-ellipsis-vertical"></i></span>
 
-    `;
-    return lists.appendChild(listItem);
-  });
-};
-window.addEventListener('load', mylists);
+const listGroup = document.getElementById('todo-lists');
+const newTask = document.querySelector('.todo-add').querySelector('input');
+const submitIcon = document.querySelector('.todo-add').querySelector('i');
+newTask.addEventListener('keypress', (event) => addmylist(event));
+submitIcon.addEventListener('click', () => addmylist('clicked'));
+
+listGroup.addEventListener('click', (event) => {
+  const clickedItem = event.target.classList[event.target.classList.length - 1];
+  const li = event.target.parentElement;
+  if (clickedItem === 'delete-icon') deletemylist(li.id);
+});
+
+listGroup.addEventListener('keypress', (event) => {
+  const pressedItem = event.target.classList[event.target.classList.length - 1];
+  const li = event.target.parentElement;
+  if (pressedItem === 'edit-todo') editmylist({ index: li.id, event });
+});
+
+window.addEventListener('load', () => { mylists(); });
