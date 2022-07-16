@@ -15,6 +15,7 @@ body {
 .todos-container {
   min-height: 60vh;
   margin: 10vh 0;
+  background-image: url("./erol-ahmed-XsQ8nUKpAO4-unsplash.jpg");
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   border-radius: 3px;
@@ -60,20 +61,20 @@ body {
   bottom: 0;
   outline: none;
   border: none;
-  background-color: #f1f2f5;
+  background-color: #5499c7;
   font-size: 16px;
   cursor: pointer;
   width: 100%;
 }
 
 .todo-delete :hover {
-  background-color: #808080;
+  background-color: #6495ed;
   transition: 0.7s;
 }
 
 .todo-delete span {
   opacity: 0.5;
-  color: #333;
+  color: #fff;
 }
 
 .todo-item input {
@@ -97,4 +98,16 @@ body {
   align-items: center;
   border-bottom: 1px #ddd solid;
   background-color: #808080;
+}
+
+.edit-todo {
+  color: #fff;
+}
+
+.checked-icon {
+  color: #5499c7;
+}
+
+.delete-icon {
+  color: #c70039;
 }
