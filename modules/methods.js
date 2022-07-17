@@ -1,9 +1,14 @@
-let mylist = JSON.parse(localStorage.getItem('mylist')) || [];// eslint-disable-line
-
+function getList() {
+  let list = [];
+  if (!localStorage.getItem('mylist')) return list;
+  list = JSON.parse(localStorage.getItem('mylist'));
+  return list;
+}
+let Mylist = getList(); //eslint-disable-line
 const mainLists = document.getElementById('todo-lists');
 const newTask = document.querySelector('.todo-add').querySelector('input');
 const mylists = () => {
-  const todosElement = mylist.map((item) => `
+  const todosElement = Mylist.map((item) => `
         <li class="todo-list todo-item" id=${item.index}>
           ${item.completed === true ? `
             <i class="fa-solid fa-check checked-icon"></i>`
@@ -18,7 +23,7 @@ const mylists = () => {
 };
 
 const updateTodo = (items) => {
-  mylist = items;
+  Mylist = items;
   mylists();
 };
 
@@ -28,11 +33,11 @@ const addmylist = (event) => {
     const todoElement = {
       description: newTask.value,
       completed: false,
-      index: mylist.length + 1,
+      index: Mylist.length + 1,
     };
     newTask.value = '';
-    mylist = [...mylist, todoElement];
-    localStorage.setItem('mylist', JSON.stringify(mylist));
+    Mylist = [...Mylist, todoElement];
+    localStorage.setItem('mylist', JSON.stringify(Mylist));
     mylists();
   }
 };
@@ -40,23 +45,23 @@ const addmylist = (event) => {
 const editmylist = ({ index, event }) => {
   if (event.target.value === '') return;
   if (event.key === 'Enter') {
-    mylist[index - 1].description = event.target.value;
-    localStorage.setItem('mylist', JSON.stringify(mylist));
+    Mylist[index - 1].description = event.target.value;
+    localStorage.setItem('mylist', JSON.stringify(Mylist));
   }
 };
 
 const deletemylist = (targetIndex) => {
-  const filterList = mylist.filter((item) => +item.index !== +targetIndex);
+  const filterList = Mylist.filter((item) => +item.index !== +targetIndex);
   const newmylist = filterList.map((item, index) => ({
     description: item.description,
     completed: item.completed,
     index: index + 1,
   }));
   localStorage.setItem('mylist', JSON.stringify(newmylist));
-  mylist = newmylist;
+  Mylist = newmylist;
   mylists();
 };
 
 export {
-  mylists, addmylist, editmylist, deletemylist, updateTodo, mylist,
+  mylists, addmylist, editmylist, deletemylist, updateTodo, Mylist,
 };

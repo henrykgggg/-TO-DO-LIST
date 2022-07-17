@@ -1,12 +1,12 @@
-import { mylists, mylist, updateTodo } from './methods.js';
+import { mylists, Mylist, updateTodo } from './methods.js';
 
 const changeTodo = ({ index, status }) => {
-  mylist[index - 1].completed = status;
-  localStorage.setItem('mylist', JSON.stringify(mylist));
+  Mylist[index - 1].completed = status;
+  localStorage.setItem('mylist', JSON.stringify(Mylist));
   mylists();
 };
 const removeTodos = () => {
-  const uncompletedTodos = mylist.filter((element) => element.completed !== true);
+  const uncompletedTodos = Mylist.filter((element) => element.completed !== true);
   const newTodos = uncompletedTodos.map((element, index) => {
     element.index = index + 1;
     return element;
